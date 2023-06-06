@@ -1,0 +1,438 @@
+<?php
+// cau1: Viết chương trình PHP để kiểm tra xem một số có phải là số chẵn hay không.
+$number = 3;
+
+function checkEven($number) {
+    if($number % 2 == 0) {
+        echo "$number is odd";
+    } else {
+        echo "$number is even";
+    }
+}
+checkEven($number);
+ // cau2: Viết chương trình PHP để tính tổng của các số từ 1 đến n.
+$n=3;
+function sum($n) {
+    $sum = 0;
+    for ($i = 1; $i <= $n; $i++) {
+        $sum += $i;
+    }
+    return $sum;
+}
+echo sum($n);
+// cau3: Viết chương trình PHP để in ra bảng cửu chương từ 1 đến 10.
+ function printfTable() {
+     for ($i = 1; $i <= 10; $i++) {
+         for ($j = 1; $j <= 10; $j++) {
+             echo "$i x $j = " . ($i * $j) ."<br>";
+         }
+         echo "<br>";
+     }
+ }
+ printfTable();
+
+// cau4: Viết chương trình PHP để kiểm tra xem một chuỗi có chứa một từ cụ thể hay không.
+$string = "Le Thi Huong";
+$word = "Huong";
+function checkString($string, $word) {
+    if (strpos($string, $word) !== true) {
+        echo "tu khong nam trong chuoi" ;
+    } else {
+        echo "tu co nam trong chuoi" ;
+    }
+}
+checkString($string, $word);
+
+// cau5: Viết chương trình PHP để tìm giá trị lớn nhất và nhỏ nhất trong một mảng.
+$arr = [1,3,5,2,7];
+function findMinMax($arr) {
+    $max = max($arr);
+    $min = min($arr);
+    echo "$max is max";
+    echo "<br>";
+    echo "$min is min";
+}
+findMinMax($arr);
+// cau6: Viết chương trình PHP để sắp xếp một mảng theo thứ tự tăng dần.
+function arrangeAr($arr) {
+    sort($arr);
+    return $arr;
+}
+$numbers = array("1", "5", "7", "2");
+$sortArr = arrangeAr($numbers);
+print_r($sortArr);
+// cau7: Viết chương trình PHP để tính giai thừa của một số nguyên dương.
+
+function calculateFact($numberFact) {
+    $factorial = 1;
+    for($i=1; $i<=$numberFact; $i++) {
+        $factorial *= $i;
+    }
+    return $factorial;
+}
+echo calculateFact (3);
+
+// cau8: Viết chương trình PHP để tìm số nguyên tố trong một khoảng cho trước.
+function checkPrime($n) {
+    if($n <= 1) {
+        return false;
+    }
+    for($i = 2; $i <= sqrt($n); $i++) {
+        if($n % $i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+$start = 1;
+$end = 10;
+function findPrimes($start, $end) {
+    $primes = array();
+    for($i = $start; $i <= $end; $i++) {
+        if(checkPrime($i)) {
+            array_push($primes, $i); 
+    }
+    return $primes;
+}
+$primes = findPrimes($start, $end);
+print_r($primes);
+
+// cau9: Viết chương trình PHP để tính tổng của các số trong một mảng.
+function sumArray($arr) {
+    $sum = 0;
+    foreach($arr as $num) {
+        $sum += $num;
+    }
+    return $sum;
+}
+
+$numbers = array(1, 2, 3, 4, 5);
+$sum = sumArray($numbers);
+echo "Tong cac so trong mang la: " . $sum;
+// cau10: Viết chương trình PHP để in ra các số Fibonacci trong một khoảng cho trước.
+function printFibonacci($n) {
+    if ($n == 0) return 0;
+    if ($n == 1) return 1;
+    return printFibonacci($n - 1) + printFibonacci($n - 2);
+}
+echo "Cac so Fibonacci la: ";
+$n = 10;
+for ($i = 0; $i < $n; $i++) {
+    echo printFibonacci($i) . " ";
+}
+// cau11: Viết chương trình PHP để kiểm tra xem một số có phải là số Armstrong hay không.
+function armstrongNumber($number) {
+    $sum = 0;
+    $temp = $number;
+    $digits = strlen((string) $number);
+    while ($temp > 0) {
+        $remainder = $temp % 10;
+        $sum += pow($remainder, $digits);
+        $temp = (int) ($temp / 10);
+    }return $number === $sum;
+}
+$number = 157;
+if (armstrongNumber($number)) {
+    echo "$number is Armstrong";
+} else {
+    echo "$number is not Armstrong";
+}
+
+// cau12: Viết chương trình PHP để chèn một phần tử vào một mảng ở vị trí bất kỳ.
+function insertElement($array, $element, $position) {
+    $result = [];
+    for ($i = 0; $i < count($array); $i++) {
+        if ($i == $position) {
+            $result[] = $element;
+        }
+        $result[] = $array[$i];
+    }return $result;
+}
+$numbers = [8,9,3,2,0];
+$element = 4;
+$position = 3;
+$result = insertElement($numbers, $element, $position);
+echo "Array after insert is: ";
+foreach ($result as $number) {
+    echo $number . " ";
+}
+//cau13: Viết chương trình PHP để loại bỏ các phần tử trùng lặp trong một mảng.
+function removeDuplicates($array) {
+    return array_unique($array);
+}
+$array = array(1, 2, 3, 3, 4, 5, 5, 6);
+print_r(removeDuplicates($array));
+
+function removeDuplicate($arr) {
+    $newArr = array();
+    foreach ($arr as $value) {
+        if (!in_array($value, $newArr)) {
+            $newArr[] = $value;
+        }
+    }
+    return $newArr;
+}
+$arr = array(1, 2, 3, 3, 4, 5, 5, 6);
+print_r(removeDuplicate($arr));
+// cau14: Viết chương trình PHP để tìm vị trí của một phần tử trong một mảng.
+function findPosition($array, $element) {
+    $position = -1;
+    $length = count($array);
+    for ($i = 0; $i < $length; $i++) {
+        if ($array[$i] === $element) {
+            $position = $i;
+            break;
+        }
+    }return $position;
+}
+$numbers = [1,5,7,2,0,0,2];
+$searchElement = 5;
+$position = findPosition($numbers, $searchElement);
+if ($position !== -1) {
+    echo " $searchElement is the $position in the array ";
+} else {
+    echo " $searchElement is not in the array";
+}
+// cau15: Viết chương trình PHP để đảo ngược một chuỗi.
+function reverseString($string) {
+    $length = strlen($string);
+    $reversedString = '';
+    for ($i = $length - 1; $i >= 0; $i--) {
+        $reversedString .= $string[$i];
+    }
+    return $reversedString;
+}
+$inputString = "15072002";
+$reversedString = reverseString($inputString);
+echo "reverse string is: " . $reversedString;
+// cau16: Viết chương trình PHP để tính số lượng phần tử trong một mảng.
+function countElements($array) {
+    return count($array);
+}
+
+$array = array("H", "U", "O", "N", "G");
+echo "The number of elements is: " . countElements($array);
+// cau17: Viết chương trình PHP để kiểm tra xem một chuỗi có phải là chuỗi Palindrome hay không.
+
+function checkPalindrome($string) {
+    $length = strlen($string);
+    for ($i = 0; $i < $length / 2; $i++) {
+        if ($string[$i] != $string[$length - 1 - $i]) {
+            echo $string . " is not palindrome ";
+        }
+    }
+    echo $string . " is palindrome ";
+}
+$string = "haah";
+echo checkPalindrome($string);
+// cau18: Viết chương trình PHP để đếm số lần xuất hiện của một phần tử trong một mảng.
+// function elementOccurrences($array, $element) {
+//     return array_count_values($array)[$element];
+// }
+
+// $array = array(1, 1, 3, 4, 5, 1);
+// $element = 1;
+// echo "The number of appears of $element is: " . elementOccurrences($array, $element);
+
+function elementOccurrences($arr, $element) {
+    $count = 0;
+    foreach ($arr as $value) {
+        if ($value === $element) {
+            $count++;
+        }
+    }
+    return $count;
+}
+
+$arr = array(1, 2, 3, 4, 3, 5, 3);
+$element = 3;
+$count =elementOccurrences($arr, $element);
+
+echo "Số lần xuất hiện của phần tử $element trong mảng là: " .$count;
+// cau19: Viết chương trình PHP để sắp xếp một mảng theo thứ tự giảm dần.
+function arrangeArr($arr) {
+    rsort($arr);
+    return $arr;
+}
+$numbers = array("1", "5", "7", "2");
+$rsortArr = arrangeArr($numbers);
+print_r($rsortArr);
+//cau20: Viết chương trình PHP để thêm một phần tử vào đầu hoặc cuối của một mảng.
+function addElement($array, $element, $position) {
+    if ($position == "end") {
+        array_push($array, $element);
+    } else if ($position == "begin") {
+        array_unshift($array, $element);
+    }
+    return $array;
+}
+
+$array = array( "A", "L", "I");
+$element = "H";
+$position = "begin"; // "end"
+$new_array = addElement($array, $element, $position);
+print_r($new_array);
+//cau21: Viết chương trình PHP để tìm số lớn thứ hai trong một mảng.
+// loai bo cac phan tu trung lap, xep theo thu tu tang dan, xuat phan tu thu 2
+$array = array(1, 5, 7, 2, 0, 0, 2);
+function secondLargest($array) {
+    $uniquearray = array_unique($array);
+    rsort($uniquearray);
+    return $uniquearray[1];
+}
+$secondlargest = secondLargest($array);
+echo "Second largest nunmber is:  " . $secondlargest;
+//cau22: Viết chương trình PHP để tìm ước số chung lớn nhất và bội số chung nhỏ nhất của hai số nguyên dương.
+function greatestCommondivisor($a, $b) {
+    if ($b == 0) return $a;
+    return greatestCommondivisor( $b,  $a % $b);
+   }
+   function leastCommonmultiple($a, $b) {
+    return ($a * $b) / greatestCommondivisor($a, $b);
+   }
+   $a = 6;
+   $b = 15;
+   echo ("greatest common divisor of $a and $b is: " . greatestCommondivisor($a, $b)) . "<br>";
+   echo ("least common multiple of $a and $b is: " . leastCommonmultiple($a, $b));
+   echo '<br>';
+
+//cau23: Viết chương trình PHP để kiểm tra xem một số có phải là số hoàn hảo hay không.
+function isPerfect($number) { 
+    $sum = 0;
+    for ($i = 1; $i < $number; $i++) {
+        if ($number % $i == 0) {
+            $sum += $i;
+        }
+    }
+    return $sum == $number; //nếu tổng các ước = số đó thì là số hoàn hảo
+}
+
+$number = 7;
+if (isPerfect($number)) {
+    echo $number . " is perfect number.";
+} else {
+    echo $number . " is not perfect number.";
+}
+  echo '<br>';
+
+//cau24: Viết chương trình PHP để tìm số lẻ lớn nhất trong một mảng.
+function largestOdd($array) {
+    $largestnumber = max($array);
+    if ($largestnumber % 2 == 1) {
+        return $largestnumber;
+    } else {
+        return "no odd number";
+    }
+}
+
+$array = array(1, 2, 3, 4, 5);
+$largestodd = largestOdd($array);
+echo "The largest odd number is: " . $largestodd;
+//cau25: Viết chương trình PHP để kiểm tra xem một số có phải là số nguyên tố hay không.
+function checkPrimenumber($n) {
+    if($n <= 1) {
+        return false;
+    }
+    for($i = 2; $i <= sqrt($n); $i++) {
+        if($n % $i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+if (checkPrimenumber(7)) {
+    echo "is prime";
+} else {
+    echo "is not prime";
+}
+//cau26: Viết chương trình PHP để tìm số dương lớn nhất trong một mảng.
+function findMax($arr) {
+    $max = $arr[0];
+    $length = count($arr);
+
+    for ($i = 1; $i < $length; $i++) {
+        if ($arr[$i] > $max) {
+            $max = $arr[$i];
+        }
+    }
+    return $max;
+}
+$numbers = array(1, 5, 7, 20, 0, 2);
+echo "the largest number is: " . findMax($numbers);
+//cau27: Viết chương trình PHP để tìm số âm lớn nhất trong một mảng.
+function maxNegative($arr) {
+    $max = null;
+    $length = count($arr);
+
+    for ($i = 0; $i < $length; $i++) {
+        if ($arr[$i] < 0 && ($max === null || $arr[$i] > $max)) {
+            $max = $arr[$i];
+        }
+    }
+
+    return $max;
+}
+
+$numbers = array(-1, -5, -10, -2, -1);
+echo "the largest negative number is: " . maxNegative($numbers);
+//cau28: Viết chương trình PHP để tính tổng các số lẻ từ 1 đến n.
+function sumOdd($n) {
+    $sum = 0;
+
+    for ($i = 1; $i <= $n; $i++) {
+        if ($i % 2 != 0) {
+            $sum += $i;
+        }
+    }
+    return $sum;
+}
+$n = 10;
+echo "sum of odd numbers is". sumOdd($n);
+//cau29: Viết chương trình PHP để tìm số chính phương trong một khoảng cho trước.
+   function check_real_leteger_number( $n){
+    //flag = 1 => số nguyên
+    //flag = 0 => số thực
+
+    $flag = 1;
+    if (ceil($n) != floor($n)) $flag = 0;
+    return $flag;
+}
+
+//Hàm kiểm tra một số có phải là số chính phương hay không
+function find_square_number($n){
+    //flag = 1 => số chính phương
+    //flag = 0 => không phải số chính phương
+
+    $flag = 0;
+    //Kiểm tra căn bậc 2 của số đó có phải là số nguyên hay không
+    if (check_real_leteger_number (sqrt($n))) $flag = 1;
+    return $flag;
+} 
+
+$array= array(4,5,16,25);
+    
+foreach($array as $n){
+    $check = find_square_number($n);
+
+    if( $check == 1 ) echo $n." la chinh phuong\n";
+    else echo $n." khong phai la so chinh phuong\n";
+}
+//cau30: Viết chương trình PHP để kiểm tra xem một chuỗi có phải là chuỗi con của một chuỗi khác hay không.
+function subString($str1, $str2) {
+    if (strpos($str1, $str2) !== false) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+$str1 = "Le Thi Huong";
+$str2 = "Huong";
+
+if (subString($str1, $str2)) {
+    echo $str2 . " is sub string ";
+} else {
+    echo $str2 . "is not sub string";
+}
+}
+ ?>
